@@ -13,7 +13,7 @@ namespace UPDesctop.Core.Entities
         public DateTime Date { get; set; }
         public string ProblemType { get; set; }
         public string ProblemDescription { get; set; }
-
+        public string Equipment { get; set; }
         public int UserId { get; set; }
         public User User { get; set; }
         public string State { get; set; }

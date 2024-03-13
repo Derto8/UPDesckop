@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,7 +37,7 @@ namespace UPDesckop.Pages.RequestPage
 
         private void Auth(object sender, RoutedEventArgs e)
         {
-            mainWindow.OpenPage(MainWindow.pages.auth);
+            mainWindow.OpenPage(MainWindow.pages.requests);
         }
 
         private async void Add(object sender, RoutedEventArgs e)
@@ -71,7 +72,8 @@ namespace UPDesckop.Pages.RequestPage
                                             ProblemDescription = tbDesc.Text,
                                             ProblemType = tbTypePromlem.Text,
                                             State = tbState.Text,
-                                            UserId = userId.Id
+                                            UserId = userId.Id,
+                                            Equipment = tbEquipment.Text,
                                         };
 
                                         mainContext.Requests.Add(request);
@@ -129,7 +131,9 @@ namespace UPDesckop.Pages.RequestPage
                                             requestId.ProblemDescription = tbDesc.Text;
                                             requestId.ProblemType = tbTypePromlem.Text;
                                             requestId.UserId = userId.Id;
+                                            requestId.Equipment = tbEquipment.Text;
 
+                                            mainContext.Update(requestId);
                                             await mainContext.SaveChangesAsync();
 
                                             mainWindow.OpenPage(MainWindow.pages.requests);
@@ -161,6 +165,17 @@ namespace UPDesckop.Pages.RequestPage
                 mainWindow.OpenPage(MainWindow.pages.requests);
             }
             else MessageBox.Show("Выберите номера заявки");
+        }
+
+        private async void combIds_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            var request = await mainContext.Requests.FirstOrDefaultAsync(c => c.Number == combIds.SelectedValue.ToString());
+            tbDate.Text = request.Date.ToString();
+            tbDesc.Text = request.ProblemDescription.ToString();
+            tbEquipment.Text = request.Equipment;
+            tbState.Text = request.State;
+            tbnumberreq.Text = request.Number;
+            tbTypePromlem.Text = request.ProblemType;
         }
     }
 }

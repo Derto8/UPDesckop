@@ -41,12 +41,14 @@ namespace UPDesckop.Pages
 
                     if (user != null)
                     {
-                        mainWindow.OpenPage(MainWindow.pages.auth);
+                        mainWindow.OpenPage(MainWindow.pages.requests);
                     }
                     else MessageBox.Show("Такого юзера не существует");
                 }
+                else
                 MessageBox.Show("Введите пасс");
             }
+            else
             MessageBox.Show("Введите логин");
         }
     }

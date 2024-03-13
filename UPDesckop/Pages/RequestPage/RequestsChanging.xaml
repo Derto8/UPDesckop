@@ -12,9 +12,9 @@
         <Label Content="Редактирование" Foreground="White" FontSize="26" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Width="220" Margin="10,10,0,0"/>
 
         <Grid Grid.Column="0">
-            <ComboBox x:Name="combIds" Margin="31,90,542,0" Height="42" VerticalAlignment="Top"/>
+            <ComboBox x:Name="combIds" Margin="31,90,542,0" Height="42" VerticalAlignment="Top" SelectionChanged="combIds_SelectionChanged"/>
             <TextBox x:Name="tbnumberreq" Text="Номер заявки" FontSize="16" Margin="31,155,0,0" Height="42" VerticalAlignment="Top" HorizontalAlignment="Left" Width="227"/>
-            <TextBox x:Name="tbDate" Text="Дата" FontSize="16" Margin="31,0,0,0" Height="42" VerticalAlignment="Center" HorizontalAlignment="Left" Width="227"/>
+            <TextBox x:Name="tbDate" Text="Дата" FontSize="16" Margin="31,204,0,0" Height="42" VerticalAlignment="Top" HorizontalAlignment="Left" Width="227"/>
             <TextBox x:Name="tbEquipment" Text="Оборудование" FontSize="16" Margin="31,251,0,0" Height="42" VerticalAlignment="Top" HorizontalAlignment="Left" Width="227"/>
             <TextBox x:Name="tbTypePromlem" Text="Тип проблемы" FontSize="16" Margin="31,298,0,0" Height="42" VerticalAlignment="Top" HorizontalAlignment="Left" Width="227"/>
             <TextBox x:Name="tbDesc" Text="Описание проблемы" FontSize="16" Margin="31,345,0,0" Height="42" VerticalAlignment="Top" HorizontalAlignment="Left" Width="227"/>

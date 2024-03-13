@@ -39,7 +39,7 @@ namespace UPDesckop.Pages.RequestPage
 
         private void GoEdit(object sender, RoutedEventArgs e)
         {
-            mainWindow.OpenPage(MainWindow.pages.auth);
+            mainWindow.OpenPage(MainWindow.pages.changingReq);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace UPDesckop
         public MainWindow()
         {
             InitializeComponent();
-            OpenPage(pages.auth);
+            OpenPage(pages.requests);
         }
 
         public enum pages

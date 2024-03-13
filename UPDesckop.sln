@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34607.119
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPDesckop", "UPDesckop\UPDesckop.csproj", "{D1D0F7C4-0C07-41CF-A011-F4A613C47D16}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UPDesctop.Core", "UPDesctop.Core\UPDesctop.Core.csproj", "{D713A769-606F-44E3-8493-539C7331B2E3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D1D0F7C4-0C07-41CF-A011-F4A613C47D16}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D1D0F7C4-0C07-41CF-A011-F4A613C47D16}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D1D0F7C4-0C07-41CF-A011-F4A613C47D16}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D1D0F7C4-0C07-41CF-A011-F4A613C47D16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D713A769-606F-44E3-8493-539C7331B2E3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D713A769-606F-44E3-8493-539C7331B2E3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D713A769-606F-44E3-8493-539C7331B2E3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D713A769-606F-44E3-8493-539C7331B2E3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {596852D4-0ACF-483D-A07C-B309120E6E40}
+	EndGlobalSection
+EndGlobal

@@ -15,7 +15,9 @@ namespace UPDesctop.Core.Entities
         public string ProblemDescription { get; set; }
         public string Equipment { get; set; }
         public int UserId { get; set; }
-        public User User { get; set; }
+        public virtual IEnumerable<User> User { get; set; }
         public string State { get; set; }
+
+        public IEnumerable<History> History { get; set; }
     }
 }

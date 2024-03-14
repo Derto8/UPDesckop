@@ -32,7 +32,7 @@ namespace UPDesckop.Pages.RequestPage
             mainContext = new MainContext();
 
             combIds.ItemsSource = mainContext.Requests.Select(c => c.Number).ToList();
-            combUsers.ItemsSource = mainContext.Users.Select(c => c.Login).ToList();
+            combUsers.ItemsSource = mainContext.Users.Where(c => c.Role == "User").Select(c => c.Login).ToList();
         }
 
         private void Auth(object sender, RoutedEventArgs e)
@@ -76,7 +76,7 @@ namespace UPDesckop.Pages.RequestPage
                                             Equipment = tbEquipment.Text,
                                         };
 
-                                        mainContext.Requests.Add(request);
+                                        await mainContext.Requests.AddAsync(request);
                                         await mainContext.SaveChangesAsync();
 
                                         mainWindow.OpenPage(MainWindow.pages.requests);

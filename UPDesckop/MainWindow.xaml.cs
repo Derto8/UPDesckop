@@ -19,17 +19,21 @@ namespace UPDesckop
         public MainWindow()
         {
             InitializeComponent();
-            OpenPage(pages.requests);
+            OpenPage(pages.workerReq);
         }
 
         public enum pages
         {
             auth,
             requests,
-            changingReq
+            changingReq,
+            workerReq,
+            histories,
+            userAddReq,
+            otchet
         }
 
-        public void OpenPage(pages page)
+        public void OpenPage(pages page, int? userId = null)
         {
             if (page == pages.auth)
                 frame.Navigate(new Pages.Authorization(this));
@@ -37,6 +41,14 @@ namespace UPDesckop
                 frame.Navigate(new Pages.RequestPage.Request(this));
             if (page == pages.changingReq)
                 frame.Navigate(new Pages.RequestPage.RequestsChanging(this));
+            if (page == pages.workerReq)
+                frame.Navigate(new Pages.RequestPage.WorkerRequest(this));
+            if (page == pages.histories)
+                frame.Navigate(new Pages.HistoriesPage(this));
+            if(page == pages.userAddReq)
+                frame.Navigate(new Pages.RequestPage.AddRequest(this, userId));
+            if (page == pages.otchet)
+                frame.Navigate(new Pages.Otchet(this));
         }
     }
 }

@@ -17,6 +17,7 @@ namespace UPDesctop.Core.Persistence
 
         public DbSet<User> Users { get; set; }
         public DbSet<Requests> Requests { get; set; }
+        public DbSet<History> Histories { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

@@ -41,7 +41,10 @@ namespace UPDesckop.Pages
 
                     if (user != null)
                     {
-                        mainWindow.OpenPage(MainWindow.pages.requests);
+                        if(user.Role == "User")
+                            mainWindow.OpenPage(MainWindow.pages.userAddReq, user.Id);
+                        if (user.Role == "Worker")
+                            mainWindow.OpenPage(MainWindow.pages.workerReq);
                     }
                     else MessageBox.Show("Такого юзера не существует");
                 }

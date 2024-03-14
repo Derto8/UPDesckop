@@ -41,5 +41,32 @@ namespace UPDesckop.Pages.RequestPage
         {
             mainWindow.OpenPage(MainWindow.pages.changingReq);
         }
+
+        private void NumberSearch(object sender, RoutedEventArgs e)
+        {
+            if (tbSearch.Text != "")
+            {
+                dtRequests.ItemsSource = mainContext.Requests.Where(c => c.Number == tbSearch.Text).ToList();
+            }
+            else MessageBox.Show("Введите текст в поиск");
+        }
+
+        private void EquipmentSearch(object sender, RoutedEventArgs e)
+        {
+            if (tbSearch.Text != "")
+            {
+                dtRequests.ItemsSource = mainContext.Requests.Where(c => c.Equipment == tbSearch.Text).ToList();
+            }
+            else MessageBox.Show("Введите текст в поиск");
+        }
+
+        private void StateSearch(object sender, RoutedEventArgs e)
+        {
+            if (tbSearch.Text != "")
+            {
+                dtRequests.ItemsSource = mainContext.Requests.Where(c => c.State == tbSearch.Text).ToList();
+            }
+            else MessageBox.Show("Введите текст в поиск");
+        }
     }
 }

@@ -17,5 +17,7 @@ namespace UPDesctop.Core.Entities
         public Requests Request { get; set; }
 
         public string Comment { get; set; }
+
+        public string TimeSpent { get; set; }
     }
 }

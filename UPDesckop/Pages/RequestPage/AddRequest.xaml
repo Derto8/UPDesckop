@@ -12,6 +12,14 @@
         <Label Content="Добавить заявку" Foreground="White" FontSize="26" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Width="220" Margin="10,10,0,0"/>
 
         <Grid Grid.Column="0">
+
+            <Label Content="Оставить отзыв" Foreground="White" FontSize="26" Height="50" VerticalAlignment="Top" HorizontalAlignment="Left" Width="220" Margin="517,92,0,0"/>
+            <Image Margin="557,152,0,0" HorizontalAlignment="Left" Width="140" Height="146" VerticalAlignment="Top">
+                <Image.Source>
+                    <FormatConvertedBitmap Source="C:\Users\Николай\source\repos\UPDesckop\UPDesckop\Images\qrUsers.jpg"/>
+                </Image.Source>
+            </Image>
+
             <TextBox x:Name="tbnumberreq" Text="Номер заявки" FontSize="16" Margin="26,96,0,0" Height="42" VerticalAlignment="Top" HorizontalAlignment="Left" Width="227"/>
             <TextBox x:Name="tbDate" Text="Дата" FontSize="16" Margin="26,145,0,0" Height="42" VerticalAlignment="Top" HorizontalAlignment="Left" Width="227"/>
             <TextBox x:Name="tbEquipment" Text="Оборудование" FontSize="16" Margin="26,192,0,0" Height="42" VerticalAlignment="Top" HorizontalAlignment="Left" Width="227"/>

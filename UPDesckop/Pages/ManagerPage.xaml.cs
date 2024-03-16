@@ -1,10 +1,7 @@
-﻿using iTextSharp.text.pdf;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -16,21 +13,18 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using UPDesctop.Core.Entities;
 using UPDesctop.Core.Persistence;
-using iTextSharp.text;
-using iTextSharp.text.pdf;
 
-namespace UPDesckop.Pages.RequestPage
+namespace UPDesckop.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для WorkerRequest.xaml
+    /// Логика взаимодействия для ManagerPage.xaml
     /// </summary>
-    public partial class WorkerRequest : Page
+    public partial class ManagerPage : Page
     {
         MainWindow mainWindow;
         MainContext mainContext;
-        public WorkerRequest(MainWindow mainWindow)
+        public ManagerPage(MainWindow mainWindow)
         {
             InitializeComponent();
             this.mainWindow = mainWindow;
@@ -46,16 +40,6 @@ namespace UPDesckop.Pages.RequestPage
             mainWindow.OpenPage(MainWindow.pages.requests);
         }
 
-        private void Exit(object sender, RoutedEventArgs e)
-        {
-            mainWindow.OpenPage(MainWindow.pages.auth);
-        }
-
-        private void Otchet(object sender, RoutedEventArgs e)
-        {
-            mainWindow.OpenPage(MainWindow.pages.otchet);
-        }
-
         private async void AddWorker(object sender, RoutedEventArgs e)
         {
             if (combIds.Text != "")
@@ -67,7 +51,7 @@ namespace UPDesckop.Pages.RequestPage
                     if (request != null)
                     {
                         var user = await mainContext.Users.FirstOrDefaultAsync(c => c.Login == combWorkers.Text);
-                        if(user != null)
+                        if (user != null)
                         {
                             user.RequestId = request.Id;
                             mainContext.Update(user);
@@ -82,41 +66,38 @@ namespace UPDesckop.Pages.RequestPage
             else MessageBox.Show("Выберите заявку");
         }
 
-        private async void Comment(object sender, RoutedEventArgs e)
+        private void Otchet(object sender, RoutedEventArgs e)
+        {
+            mainWindow.OpenPage(MainWindow.pages.statistics);
+        }
+
+        private void Exit(object sender, RoutedEventArgs e)
+        {
+            mainWindow.OpenPage(MainWindow.pages.auth);
+        }
+
+        private async void ChangeTime(object sender, RoutedEventArgs e)
         {
             if (combIds.Text != "")
             {
-                if (combWorkers.Text != "")
+                if (tbData.Text != "")
                 {
-                    if (tbHistory.Text != "")
+                    var date = DateTime.TryParse(tbData.Text, out DateTime time) ? time : DateTime.MinValue;
+                    if (date == DateTime.MinValue)
                     {
-                        if (tbTime.Text != "")
-                        {
-                            var ttime = TimeOnly.TryParse(tbTime.Text, out TimeOnly time) ? time : TimeOnly.MinValue;
-                            if (time == TimeOnly.MinValue)
-                            {
-                                MessageBox.Show("Введите правильно затраченное время!");
-                                return;
-                            }
-
-                            History history = new History
-                            {
-                                Comment = combWorkers.Text,
-                                RequestId = (await mainContext.Requests.FirstOrDefaultAsync(c => c.Number == combIds.Text)).Id,
-                                UserId = (await mainContext.Users.FirstOrDefaultAsync(c => c.Login == combWorkers.Text)).Id,
-                                TimeSpent = time.ToString()
-                            };
-
-                            await mainContext.AddAsync(history);
-                            await mainContext.SaveChangesAsync();
-
-                            mainWindow.OpenPage(MainWindow.pages.histories);
-                        }
-                        else MessageBox.Show("Введите потраченное время");
+                        MessageBox.Show("Введите правильно дату!");
+                        return;
                     }
-                    else MessageBox.Show("Введите комментарий");
+
+                    var requestId = mainContext.Requests.FirstOrDefault(c => c.Number == combIds.Text);
+                    requestId.Date = date;
+
+                    mainContext.Update(requestId);
+                    await mainContext.SaveChangesAsync();
+
+                    MessageBox.Show("Время заявки было изменено!");
                 }
-                else MessageBox.Show("Выберите работника");
+                else MessageBox.Show("Введите дату!");
             }
             else MessageBox.Show("Выберите заявку");
         }

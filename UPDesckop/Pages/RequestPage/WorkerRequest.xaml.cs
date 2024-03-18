@@ -36,7 +36,7 @@ namespace UPDesckop.Pages.RequestPage
             this.mainWindow = mainWindow;
             mainContext = new MainContext();
 
-            dtRequests.ItemsSource = mainContext.Users.Where(c => c.Role == "Worker").ToList();
+            dtRequests.ItemsSource = mainContext.Requests.ToList();
             combWorkers.ItemsSource = mainContext.Users.Where(c => c.Role == "Worker").Select(c => c.Login).ToList();
             combIds.ItemsSource = mainContext.Requests.Select(c => c.Number).ToList();
         }
@@ -101,7 +101,7 @@ namespace UPDesckop.Pages.RequestPage
 
                             History history = new History
                             {
-                                Comment = combWorkers.Text,
+                                Comment = tbHistory.Text,
                                 RequestId = (await mainContext.Requests.FirstOrDefaultAsync(c => c.Number == combIds.Text)).Id,
                                 UserId = (await mainContext.Users.FirstOrDefaultAsync(c => c.Login == combWorkers.Text)).Id,
                                 TimeSpent = time.ToString()
